@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "83984557704",
+    "firebase_url": "https://fivver-80aa1.firebaseio.com",
+    "project_id": "fivver-80aa1",
+    "storage_bucket": "fivver-80aa1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83984557704:android:6c4345a1fe435e4f21a13d",
+        "android_client_info": {
+          "package_name": "com.example.wear"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83984557704-g1gk01jmibrhmav1qg58gpvf0vdgb578.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-Iqrf8Nqf_pzQeZ0xWQ-rYe6uexkSYIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83984557704-g1gk01jmibrhmav1qg58gpvf0vdgb578.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83984557704:android:79b233a065a4daa821a13d",
+        "android_client_info": {
+          "package_name": "com.s17131890.carelite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83984557704-mevv8an1f2pu7fkbcncgv9g2vr7qnsei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.s17131890.carelite",
+            "certificate_hash": "fd7ae4a53ea0d2941fff787b7117704b9473e3ca"
+          }
+        },
+        {
+          "client_id": "83984557704-g1gk01jmibrhmav1qg58gpvf0vdgb578.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-Iqrf8Nqf_pzQeZ0xWQ-rYe6uexkSYIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83984557704-g1gk01jmibrhmav1qg58gpvf0vdgb578.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83984557704:android:509203cc544c3f8521a13d",
+        "android_client_info": {
+          "package_name": "com.wear.carelite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83984557704-g1gk01jmibrhmav1qg58gpvf0vdgb578.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-Iqrf8Nqf_pzQeZ0xWQ-rYe6uexkSYIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83984557704-g1gk01jmibrhmav1qg58gpvf0vdgb578.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
