@@ -45,9 +45,18 @@ public class CheckupHistoryFragment extends Fragment {
         model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         navController = Navigation.findNavController(view);
 
+        binding.patientName2.setText(model.currentPatient.getName());
+
         Temp= (EditText) binding.temp;
         Pressure= (EditText) binding.pressure;
         HeartRate=(EditText) binding.heartrate;
+
+        binding.backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_checkupHistoryFragment_to_patientFragment);
+            }
+        });
 
         binding.update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +65,15 @@ public class CheckupHistoryFragment extends Fragment {
                 String pressure= Pressure.getText().toString();
                 String heartrate = HeartRate.getText().toString();
                 if(!temp.equals("") && !pressure.equals("") && !heartrate.equals("")){
-                    model.updatePatient(new CheckupHistory(Float.parseFloat(temp),Integer.parseInt(pressure),Integer.parseInt(heartrate)));
+                    try {
+                        model.updatePatient(new CheckupHistory(Float.parseFloat(temp),Integer.parseInt(pressure),Integer.parseInt(heartrate)));
+                        navController.navigate(R.id.action_checkupHistoryFragment_to_patientFragment);
+
+                    }
+                    catch (Exception e){
+
+                    }
+
 
 
                 }

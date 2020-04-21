@@ -21,7 +21,9 @@
         tools:layout="@layout/fragment_checkup_history" >
         <action
             android:id="@+id/action_checkupHistoryFragment_to_patientFragment"
-            app:destination="@id/patientFragment" />
+            app:destination="@id/patientFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/patientFragment" />
     </fragment>
     <fragment
         android:id="@+id/patientListFragment"
@@ -30,7 +32,8 @@
         tools:layout="@layout/fragment_patient_list" >
         <action
             android:id="@+id/action_patientListFragment_to_patientFragment"
-            app:destination="@id/patientFragment" />
+            app:destination="@id/patientFragment"
+            app:launchSingleTop="true" />
     </fragment>
     <fragment
         android:id="@+id/patientFragment"
@@ -39,9 +42,11 @@
         tools:layout="@layout/fragment_patient" >
         <action
             android:id="@+id/action_patientFragment_to_checkupHistoryFragment"
-            app:destination="@id/checkupHistoryFragment" />
+            app:destination="@id/checkupHistoryFragment"
+            app:launchSingleTop="true" />
         <action
             android:id="@+id/action_patientFragment_to_patientListFragment"
-            app:destination="@id/patientListFragment" />
+            app:destination="@id/patientListFragment"
+            app:popUpTo="@id/patientListFragment" />
     </fragment>
 </navigation>

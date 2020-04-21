@@ -1,5 +1,6 @@
 package com.s17131890.carelite;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -56,12 +57,6 @@ public class HomeFragment extends Fragment {
         currentUser = mAuth.getCurrentUser();
         databaseDoctors = FirebaseDatabase.getInstance().getReference("doctors");
 
-
-
-
-
-
-        binding.docId.setText(currentUser.getUid());
         binding.patientbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +70,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        ProgressDialog Dialog = new ProgressDialog(getContext());
+        Dialog.setMessage("Loading...");
+        Dialog.show();
 
 
         databaseDoctors.addValueEventListener(new ValueEventListener() {
@@ -90,6 +88,8 @@ public class HomeFragment extends Fragment {
                         binding.docName.setText(doctor.getName());
                         binding.patientCount.setText("Patient Count : "+Integer.toString(doctor.getPatientCount()));
                     }
+
+                    Dialog.dismiss();
 
                 }
             }

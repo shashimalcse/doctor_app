@@ -48,13 +48,19 @@ public class PatientFragment extends Fragment {
         model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         navController = Navigation.findNavController(view);
         recyclerView=binding.recycleview2;
+        binding.patientName2.setText(model.currentPatient.getName());
         historyList = Objects.requireNonNull(model.currentPatient.getHistory());
         Log.d("HISTORIES",Integer.toString(historyList.size()));
         PatientHistoryAdapter patientHistoryAdapter = new PatientHistoryAdapter(getContext(),historyList,model);
 
         recyclerView.setAdapter(patientHistoryAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        binding.backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_patientFragment_to_patientListFragment);
+            }
+        });
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

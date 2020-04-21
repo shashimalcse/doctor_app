@@ -2,6 +2,7 @@ package com.s17131890.carelite;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -51,6 +52,16 @@ public class LoginActivity extends AppCompatActivity {
         Email = binding.username;
         Password = binding.password;
         LoginButton=binding.submit;
+
+        binding.fotgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText editText = new EditText(getApplicationContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setTitle("Reset Password?");
+                builder.s
+            }
+        });
         
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override

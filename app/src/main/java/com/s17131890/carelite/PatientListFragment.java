@@ -3,6 +3,7 @@ package com.s17131890.carelite;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -30,6 +31,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.s17131890.carelite.databinding.FragmentPatientListBinding;
 
@@ -50,6 +52,7 @@ public class PatientListFragment extends Fragment{
     SharedViewModel model;
     public static String id = "test_channel_01";
     int notificationID = 1;
+    Query myTopPostsQuery;
 
 
     @Override
@@ -69,11 +72,14 @@ public class PatientListFragment extends Fragment{
         navController = Navigation.findNavController(view);
         model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         databasePatients = FirebaseDatabase.getInstance().getReference("patients");
+        myTopPostsQuery = databasePatients
+                .orderByChild("name");
+
         createchannel();
 
 
 
-//        model.getPatientList(getContext(),navController,model,recyclerView);
+
 
 
 
@@ -84,9 +90,12 @@ public class PatientListFragment extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
+        ProgressDialog Dialog = new ProgressDialog(getContext());
+        Dialog.setMessage("Loading...");
+        Dialog.show();
 
         List<Patient> patients1 = new ArrayList<>();
-        databasePatients.addValueEventListener(new ValueEventListener() {
+        myTopPostsQuery.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -107,6 +116,7 @@ public class PatientListFragment extends Fragment{
                 PatientListAdapter patientListAdapter = new PatientListAdapter(getContext(),model.patients,navController,model);
                 recyclerView.setAdapter(patientListAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                Dialog.dismiss();
             }
 
             @Override

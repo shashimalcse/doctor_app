@@ -4,11 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CheckupHistoryFragment">
+    tools:context=".CheckupHistoryFragment"
+    android:background="@color/back">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50121653" />
 
         <EditText
             android:id="@+id/temp"
@@ -17,7 +25,11 @@
             android:layout_marginBottom="20dp"
             android:ems="10"
             android:hint="Temperature"
+            android:background="@drawable/history"
             android:inputType="textPersonName"
+            android:paddingLeft="30dp"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
             app:layout_constraintBottom_toTopOf="@+id/pressure"
             app:layout_constraintEnd_toEndOf="@+id/pressure"
             app:layout_constraintStart_toStartOf="@+id/pressure" />
@@ -26,9 +38,13 @@
             android:id="@+id/pressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/history"
             android:ems="10"
             android:hint="Blood Pressure"
             android:inputType="textPersonName"
+            android:paddingLeft="30dp"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,21 +55,52 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:background="@drawable/history"
             android:ems="10"
             android:hint="Heart Rate"
-            android:inputType="textPassword"
+            android:inputType="textPersonName"
+            android:paddingLeft="30dp"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
             app:layout_constraintEnd_toEndOf="@+id/pressure"
             app:layout_constraintStart_toStartOf="@+id/pressure"
             app:layout_constraintTop_toBottomOf="@+id/pressure" />
 
         <Button
-            android:id="@+id/update"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/backbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:text="Back"
+            android:background="@drawable/button"
+            android:textColor="@android:color/background_light"
+            app:layout_constraintBottom_toBottomOf="@+id/update"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/update" />
+
+        <Button
+            android:id="@+id/update"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/button"
             android:text="update"
-            app:layout_constraintEnd_toEndOf="@+id/heartrate"
-            app:layout_constraintStart_toStartOf="@+id/heartrate"
-            app:layout_constraintTop_toBottomOf="@+id/heartrate" />
+            android:textColor="@android:color/background_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+        <TextView
+            android:id="@+id/patient_name2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/temp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

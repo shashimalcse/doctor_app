@@ -79,7 +79,7 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
         public PatientViewHolder(@Nullable View itemView) {
             super(itemView);
             PatientPhoto = (ImageView) itemView.findViewById(R.id.patient_image);
-            PatientName = (TextView) itemView.findViewById(R.id.patient_name);
+            PatientName = (TextView) itemView.findViewById(R.id.patient_name2);
             PatientID = (TextView) itemView.findViewById(R.id.patient_id);
             PatientStatus = (ImageView) itemView.findViewById(R.id.patient_status);
             ViewButton = (Button) itemView.findViewById(R.id.viewbutton);

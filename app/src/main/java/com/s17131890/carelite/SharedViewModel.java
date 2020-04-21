@@ -62,7 +62,8 @@ public class SharedViewModel extends ViewModel {
 
         reference.setValue(currentPatient);
 
-        getPatientList(context,navController,model,recyclerView);}
+//        getPatientList(context,navController,model,recyclerView);
+}
         catch (Exception e){
 
         }
@@ -70,39 +71,39 @@ public class SharedViewModel extends ViewModel {
 
 
 
-    public void getPatientList(Context context, NavController navController, SharedViewModel model, RecyclerView recyclerView){
-        this.context=context;
-        this.navController=navController;
-        this.model=model;
-        this.recyclerView=recyclerView;
-        patients = new ArrayList<>();
-
-        List<Patient> patients1 = new ArrayList<>();
-        databasePatients.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                patients.clear();
-
-                for(DataSnapshot patientSnapshot:dataSnapshot.getChildren()){
-                    Patient patient = patientSnapshot.getValue(Patient.class);
-                    patients1.add(patient);
-                }
-                Log.d("PATIENTS",Integer.toString(patients.size()));
-
-                PatientListAdapter patientListAdapter = new PatientListAdapter(context,patients,navController,model);
-                recyclerView.setAdapter(patientListAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-
-        });
-        this.patients=patients1;
-
-    }
+//    public void getPatientList(Context context, NavController navController, SharedViewModel model, RecyclerView recyclerView){
+//        this.context=context;
+//        this.navController=navController;
+//        this.model=model;
+//        this.recyclerView=recyclerView;
+//        patients = new ArrayList<>();
+//
+//        List<Patient> patients1 = new ArrayList<>();
+//        databasePatients.orderByChild("name").addValueEventListener(new ValueEventListener() {
+//
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                patients.clear();
+//
+//                for(DataSnapshot patientSnapshot:dataSnapshot.getChildren()){
+//                    Patient patient = patientSnapshot.getValue(Patient.class);
+//                    patients1.add(patient);
+//                }
+//                Log.d("PATIENTS",Integer.toString(patients.size()));
+//
+//                PatientListAdapter patientListAdapter = new PatientListAdapter(context,patients,navController,model);
+//                recyclerView.setAdapter(patientListAdapter);
+//                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//
+//        });
+//        this.patients=patients1;
+//
+//    }
 
     }

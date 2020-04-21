@@ -35,7 +35,7 @@
                 app:srcCompat="@drawable/ic_status_green" />
 
             <TextView
-                android:id="@+id/patient_name"
+                android:id="@+id/patient_name2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -56,9 +56,9 @@
                 android:text="TextView"
                 android:textColor="@android:color/background_light"
                 android:textSize="10sp"
-                app:layout_constraintEnd_toEndOf="@+id/patient_name"
-                app:layout_constraintStart_toStartOf="@+id/patient_name"
-                app:layout_constraintTop_toBottomOf="@+id/patient_name" />
+                app:layout_constraintEnd_toEndOf="@+id/patient_name2"
+                app:layout_constraintStart_toStartOf="@+id/patient_name2"
+                app:layout_constraintTop_toBottomOf="@+id/patient_name2" />
 
             <ImageView
                 android:id="@+id/patient_status"
