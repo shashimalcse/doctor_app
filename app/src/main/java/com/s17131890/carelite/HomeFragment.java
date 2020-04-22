@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,6 +40,7 @@ public class HomeFragment extends Fragment {
     private FirebaseAuth mAuth;
     DatabaseReference databaseDoctors;
     FirebaseUser currentUser;
+    SharedViewModel model;
 
 
     @Override
@@ -56,7 +58,7 @@ public class HomeFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
         databaseDoctors = FirebaseDatabase.getInstance().getReference("doctors");
-
+        model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         binding.patientbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +89,7 @@ public class HomeFragment extends Fragment {
                         binding.docId.setText(doctor.getMedId());
                         binding.docName.setText(doctor.getName());
                         binding.patientCount.setText("Patient Count : "+Integer.toString(doctor.getPatientCount()));
+                        model.Doctor_ID = currentUser.getUid();
                     }
 
                     Dialog.dismiss();

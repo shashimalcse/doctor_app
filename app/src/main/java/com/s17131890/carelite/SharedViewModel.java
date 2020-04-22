@@ -29,10 +29,12 @@ public class SharedViewModel extends ViewModel {
     NavController navController;
     SharedViewModel model;
     RecyclerView recyclerView;
+    String Doctor_ID;
 
 
     public SharedViewModel() {
         patients =new ArrayList<>();
+        Doctor doctor = null;
     }
 
     public void setPatient(Patient patient){
@@ -47,6 +49,7 @@ public class SharedViewModel extends ViewModel {
     public void updatePatient(CheckupHistory checkupHistory){
         try{
         currentPatient.addHistory(checkupHistory);
+        currentPatient.setLastUpdate(checkupHistory.getDate()+" "+checkupHistory.getTime());
         updatePatient();}
         catch (Exception e){
 

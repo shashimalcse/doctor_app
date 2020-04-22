@@ -36,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.s17131890.carelite.databinding.FragmentPatientListBinding;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -72,6 +73,16 @@ public class PatientListFragment extends Fragment{
         navController = Navigation.findNavController(view);
         model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         databasePatients = FirebaseDatabase.getInstance().getReference("patients");
+//        CheckupHistory checkupHistory = new CheckupHistory(12,12,12,"04/22/2020","23:28:00");
+//        CheckupHistory checkupHistory2 =  new CheckupHistory(12,12,12,"04/22/2020","23:29:00");
+//        List<CheckupHistory> checkupHistories = new ArrayList<>();
+//        checkupHistories.add(checkupHistory);
+//        checkupHistories.add(checkupHistory2);
+//        String id =databasePatients.push().getKey();
+//        Patient patient = new Patient("Shashimal Senarath",id, "04/22/2020 16:45:00",checkupHistories,"y8CaHv0mn7UyS13oO7zldJN111N2","https://firebasestorage.googleapis.com/v0/b/fivver-80aa1.appspot.com/o/HTB1fNGuX._rK1Rjy0Fcq6zEvVXak.jpg?alt=media&token=a7ef2196-be12-44f4-9d0e-bca576cddcec");
+//
+//        databasePatients.child(id).setValue(patient);
+
         myTopPostsQuery = databasePatients
                 .orderByChild("name");
 
@@ -103,10 +114,11 @@ public class PatientListFragment extends Fragment{
 
                 for(DataSnapshot patientSnapshot:dataSnapshot.getChildren()){
                     Patient patient = patientSnapshot.getValue(Patient.class);
-                    if (patient.getStatus().equals("2")){
-                        simpleNoti(patient);
-                    }
-                    patients1.add(patient);
+//                    if (patient.getStatus().equals("2")){
+//                        simpleNoti(patient);
+//                    }
+                    if(patient.getDoctor_ID().equals(model.Doctor_ID)){
+                    patients1.add(patient);}
                 }
                 model.patients.clear();
 

@@ -56,38 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         Password = binding.password;
         LoginButton=binding.submit;
 
-        binding.fotgot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText editText = new EditText(getApplicationContext());
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("Reset Password?");
-                builder.setMessage("Enter your Email to snd Rest Code");
-                builder.setView(editText);
 
-
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String mail = editText.getText().toString();
-                        if(mail.equals("") || mail!=null){
-                        mAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(getApplicationContext(),"Check your Email",Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getApplicationContext(),"Something Wrong!",Toast.LENGTH_SHORT).show();
-
-                            }
-                        });
-                        }
-                    }
-                });
-            }
-        });
         
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override

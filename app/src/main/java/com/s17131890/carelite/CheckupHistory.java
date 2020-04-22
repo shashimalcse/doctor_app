@@ -13,12 +13,12 @@ public class CheckupHistory {
     private String Date;
     private String Time;
 
-    public CheckupHistory(float temperature, int bloodPressure, int heartRate) {
+    public CheckupHistory(float temperature, int bloodPressure, int heartRate, String date , String time) {
         Temperature = temperature;
         BloodPressure = bloodPressure;
         HeartRate = heartRate;
-        Date = getCurrentDate();
-        Time = getCurrentTime();
+        Date = date;
+        Time = time;
     }
 
     public CheckupHistory(){
@@ -67,19 +67,5 @@ public class CheckupHistory {
 
     public static final String DATE_FORMAT_2 = "dd-MMM-yyyy";
 
-    public static String getCurrentDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_2);
-        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        Date today = Calendar.getInstance().getTime();
-        return dateFormat.format(today);
-    }
 
-    public static final String DATE_FORMAT_1 = "hh:mm a";
-
-    public static String getCurrentTime() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_1);
-        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        Date today = Calendar.getInstance().getTime();
-        return dateFormat.format(today);
-    }
 }

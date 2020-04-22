@@ -22,22 +22,55 @@
             android:id="@+id/temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:background="@drawable/history"
             android:ems="10"
             android:hint="Temperature"
-            android:background="@drawable/history"
             android:inputType="textPersonName"
             android:paddingLeft="30dp"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light"
-            app:layout_constraintBottom_toTopOf="@+id/pressure"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/pressure"
-            app:layout_constraintStart_toStartOf="@+id/pressure" />
+            app:layout_constraintStart_toStartOf="@+id/pressure"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/history"
+            android:ems="10"
+            android:hint="Time"
+            android:inputType="textPersonName"
+            android:paddingLeft="30dp"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
+            app:layout_constraintBottom_toTopOf="@+id/temp"
+            app:layout_constraintEnd_toEndOf="@+id/temp"
+            app:layout_constraintStart_toStartOf="@+id/temp" />
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/history"
+            android:ems="10"
+            android:hint="Date"
+            android:inputType="textPersonName"
+            android:paddingLeft="30dp"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_light"
+            app:layout_constraintBottom_toTopOf="@+id/time"
+            app:layout_constraintEnd_toEndOf="@+id/time"
+            app:layout_constraintStart_toStartOf="@+id/time" />
 
         <EditText
             android:id="@+id/pressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@drawable/history"
             android:ems="10"
             android:hint="Blood Pressure"
@@ -45,10 +78,9 @@
             android:paddingLeft="30dp"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/temp" />
 
         <EditText
             android:id="@+id/heartrate"
@@ -67,12 +99,12 @@
             app:layout_constraintTop_toBottomOf="@+id/pressure" />
 
         <Button
-            style="@style/Widget.AppCompat.Button.Borderless"
             android:id="@+id/backbutton"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back"
             android:background="@drawable/button"
+            android:text="Back"
             android:textColor="@android:color/background_light"
             app:layout_constraintBottom_toBottomOf="@+id/update"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -93,14 +125,15 @@
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
         <TextView
-            android:id="@+id/patient_name2"
+            android:id="@+id/patientName2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/background_light"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/temp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/date"
+            app:layout_constraintEnd_toEndOf="@+id/date"
+            app:layout_constraintStart_toStartOf="@+id/date"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

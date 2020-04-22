@@ -1,6 +1,7 @@
 package com.s17131890.carelite;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,14 @@ import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.PatientViewHolder> {
 
@@ -44,15 +52,33 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
     public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
         holder.PatientName.setText(patients.get(position).getName());
         holder.PatientID.setText(patients.get(position).getID());
-        if (patients.get(position).getStatus().equals("0")) {
-            holder.PatientStatus.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_status_green));
+
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").parse(patients.get(position).getLastUpdate());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        else if (patients.get(position).getStatus().equals("1")) {
+
+
+        Date now = new Date();
+        long diff = now.getTime()-date.getTime();
+
+        long diffMinutes = diff / (60 * 1000);
+
+        if (diffMinutes>60*6) {
             holder.PatientStatus.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_status_red));
         }
-        else  if (patients.get(position).getStatus().equals("2")) {
+        else if (diffMinutes>60*2) {
             holder.PatientStatus.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_status_yellow));
         }
+        else   {
+            holder.PatientStatus.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_status_green));
+        }
+
+
+        Picasso.get().load(patients.get(position).getUrl()).fit().into(holder.PatientPhoto);
+
         holder.ViewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
