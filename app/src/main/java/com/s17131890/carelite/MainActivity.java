@@ -47,10 +47,11 @@ public class MainActivity extends AppCompatActivity {
         handler = new Handler();
         handler.postDelayed(new Runnable(){
             public void run(){
-
-                handler.postDelayed(this, 1000*60*5);
+                update();
+                Log.d("HIIII","FUCKED");
+                handler.postDelayed(this, 1000*60);
             }
-        }, 1000*60*5);
+        }, 1000*60);
 
 
 
