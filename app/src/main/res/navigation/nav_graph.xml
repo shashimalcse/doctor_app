@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.s17131890.carelite.HomeFragment"
-        android:label="fragment_home"
+        android:label=" "
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_patientListFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/checkupHistoryFragment"
         android:name="com.s17131890.carelite.CheckupHistoryFragment"
-        android:label="fragment_checkup_history"
+        android:label=" "
         tools:layout="@layout/fragment_checkup_history" >
         <action
             android:id="@+id/action_checkupHistoryFragment_to_patientFragment"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/patientListFragment"
         android:name="com.s17131890.carelite.PatientListFragment"
-        android:label="fragment_patient_list"
+        android:label=" "
         tools:layout="@layout/fragment_patient_list" >
         <action
             android:id="@+id/action_patientListFragment_to_patientFragment"
@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/patientFragment"
         android:name="com.s17131890.carelite.PatientFragment"
-        android:label="fragment_patient"
+        android:label=" "
         tools:layout="@layout/fragment_patient" >
         <action
             android:id="@+id/action_patientFragment_to_checkupHistoryFragment"

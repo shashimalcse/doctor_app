@@ -5,12 +5,14 @@ public class Doctor {
     private String medId;
     private int patientCount;
     private String ID;
+    private String Url;
 
-    public Doctor(String name, String medId, int patientCount, String ID) {
+    public Doctor(String name, String medId, int patientCount, String ID ,String Url) {
         this.name = name;
         this.medId = medId;
         this.patientCount = patientCount;
         this.ID = ID;
+        this.Url=Url;
     }
 
     public Doctor(){
@@ -47,5 +49,13 @@ public class Doctor {
 
     public void setID(String ID) {
         this.ID = ID;
+    }
+
+    public String getUrl() {
+        return Url;
+    }
+
+    public void setUrl(String url) {
+        Url = url;
     }
 }

@@ -38,7 +38,7 @@ public class PatientHistoryAdapter extends RecyclerView.Adapter<PatientHistoryAd
     public void onBindViewHolder(@NonNull PatientHistoryAdapter.HistoryViewHolder holder, int position) {
         Log.d("HIstory",Float.toString(historyList.get(position).getTemperature()));
             holder.Temp.setText(Float.toString(historyList.get(position).getTemperature())+" C");
-            holder.Pressure.setText(Float.toString(historyList.get(position).getBloodPressure())+"mmHg");
+            holder.Pressure.setText(historyList.get(position).getBloodPressure()+"mmHg");
             holder.HeartRate.setText(Float.toString(historyList.get(position).getHeartRate())+" bpm");
             holder.Date.setText(historyList.get(position).getDate());
             holder.Time.setText(historyList.get(position).getTime());

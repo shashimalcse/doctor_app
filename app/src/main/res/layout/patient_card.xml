@@ -11,20 +11,21 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="10dp"
         android:backgroundTint="@color/black"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="10dp"
 
             >
 
             <ImageView
                 android:id="@+id/patient_image"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
@@ -32,7 +33,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_status_green" />
+                 />
 
             <TextView
                 android:id="@+id/patient_name2"
@@ -42,7 +43,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
                 android:gravity="left"
-                android:text="TextView"
+
                 android:textColor="@android:color/background_light"
                 app:layout_constraintStart_toEndOf="@+id/patient_image"
                 app:layout_constraintTop_toTopOf="@+id/patient_image" />
@@ -53,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="left"
-                android:text="TextView"
+
+
                 android:textColor="@android:color/background_light"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="@+id/patient_name2"
@@ -62,22 +64,18 @@
 
             <ImageView
                 android:id="@+id/patient_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/patient_image"
                 app:layout_constraintEnd_toStartOf="@+id/viewbutton"
                 app:layout_constraintTop_toTopOf="@+id/patient_image"
-                app:srcCompat="@android:drawable/ic_notification_overlay" />
+                 />
 
             <Button
                 android:id="@+id/viewbutton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
                 android:text="View"
                 android:textColor="@android:color/holo_blue_bright"
                 app:layout_constraintBottom_toBottomOf="@+id/patient_image"

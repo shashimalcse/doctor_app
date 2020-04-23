@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,6 +55,7 @@ public class PatientListFragment extends Fragment{
     public static String id = "test_channel_01";
     int notificationID = 1;
     Query myTopPostsQuery;
+    LinearLayoutManager linearLayoutManager;
 
 
     @Override
@@ -73,13 +75,19 @@ public class PatientListFragment extends Fragment{
         navController = Navigation.findNavController(view);
         model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         databasePatients = FirebaseDatabase.getInstance().getReference("patients");
-//        CheckupHistory checkupHistory = new CheckupHistory(12,12,12,"04/22/2020","23:28:00");
-//        CheckupHistory checkupHistory2 =  new CheckupHistory(12,12,12,"04/22/2020","23:29:00");
+
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                linearLayoutManager.getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
+//        CheckupHistory checkupHistory = new CheckupHistory(12,"120/60",12,"04/22/2020","23:28:00");
+//        CheckupHistory checkupHistory2 =  new CheckupHistory(12,"120/60",12,"04/22/2020","23:29:00");
 //        List<CheckupHistory> checkupHistories = new ArrayList<>();
 //        checkupHistories.add(checkupHistory);
 //        checkupHistories.add(checkupHistory2);
 //        String id =databasePatients.push().getKey();
-//        Patient patient = new Patient("Shashimal Senarath",id, "04/22/2020 16:45:00",checkupHistories,"y8CaHv0mn7UyS13oO7zldJN111N2","https://firebasestorage.googleapis.com/v0/b/fivver-80aa1.appspot.com/o/HTB1fNGuX._rK1Rjy0Fcq6zEvVXak.jpg?alt=media&token=a7ef2196-be12-44f4-9d0e-bca576cddcec");
+//        Patient patient = new Patient("Sachini Anjalika",id, "04/22/2020 16:45:00",checkupHistories,"y8CaHv0mn7UyS13oO7zldJN111N2","https://firebasestorage.googleapis.com/v0/b/fivver-80aa1.appspot.com/o/HTB1fNGuX._rK1Rjy0Fcq6zEvVXak.jpg?alt=media&token=a7ef2196-be12-44f4-9d0e-bca576cddcec");
 //
 //        databasePatients.child(id).setValue(patient);
 
@@ -127,7 +135,7 @@ public class PatientListFragment extends Fragment{
 
                 PatientListAdapter patientListAdapter = new PatientListAdapter(getContext(),model.patients,navController,model);
                 recyclerView.setAdapter(patientListAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
                 Dialog.dismiss();
             }
 

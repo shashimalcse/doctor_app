@@ -94,12 +94,12 @@ public class CheckupHistoryFragment extends Fragment {
                 String Time = binding.time.getText().toString();
                 if(!temp.equals("") && !pressure.equals("") && !heartrate.equals("") && !Date.equals("") && !Time.equals("")){
                     try {
-                        model.updatePatient(new CheckupHistory(Float.parseFloat(temp),Integer.parseInt(pressure),Integer.parseInt(heartrate),Date,Time));
+                        model.updatePatient(new CheckupHistory(Float.parseFloat(temp),pressure,Integer.parseInt(heartrate),Date,Time));
                         navController.navigate(R.id.action_checkupHistoryFragment_to_patientFragment);
 
                     }
                     catch (Exception e){
-
+                        Toast.makeText(getContext(),"Not valid Values",Toast.LENGTH_SHORT).show();
                     }
 
 

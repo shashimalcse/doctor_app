@@ -51,7 +51,7 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
     @Override
     public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
         holder.PatientName.setText(patients.get(position).getName());
-        holder.PatientID.setText(patients.get(position).getID());
+        holder.PatientID.setText("Patient ID: "+patients.get(position).getID());
 
         Date date = null;
         try {

@@ -8,12 +8,12 @@ import java.util.TimeZone;
 
 public class CheckupHistory {
     private float Temperature;
-    private int BloodPressure;
+    private String BloodPressure;
     private int HeartRate;
     private String Date;
     private String Time;
 
-    public CheckupHistory(float temperature, int bloodPressure, int heartRate, String date , String time) {
+    public CheckupHistory(float temperature, String bloodPressure, int heartRate, String date , String time) {
         Temperature = temperature;
         BloodPressure = bloodPressure;
         HeartRate = heartRate;
@@ -33,11 +33,11 @@ public class CheckupHistory {
         Temperature = temperature;
     }
 
-    public int getBloodPressure() {
+    public String getBloodPressure() {
         return BloodPressure;
     }
 
-    public void setBloodPressure(int bloodPressure) {
+    public void setBloodPressure(String bloodPressure) {
         BloodPressure = bloodPressure;
     }
 

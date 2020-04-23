@@ -4,7 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.NotificationChannel;
@@ -16,7 +22,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,11 +44,26 @@ public class MainActivity extends AppCompatActivity {
     int notificationID = 1;
     DatabaseReference databasePatients;
     SharedViewModel model;
+    NavController navController;
+    NavigationView navigationView;
+    AppBarConfiguration appBarConfiguration;
+    DrawerLayout drawerLayout;
+    List<String> patient_ids;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        drawerLayout = findViewById(R.id.drawer);
+        navigationView = findViewById(R.id.nav_draw);
+        navController = Navigation.findNavController(this,R.id.nav_host_fragment);
+
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setDrawerLayout(drawerLayout).build();
+        NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView,navController);
+
+        patient_ids = new ArrayList<>();
+
         model = new ViewModelProvider(this).get(SharedViewModel.class);
         databasePatients = FirebaseDatabase.getInstance().getReference("patients");
         createchannel();
@@ -48,13 +71,30 @@ public class MainActivity extends AppCompatActivity {
         update();
         handler.postDelayed(new Runnable(){
             public void run(){
+                patient_ids.clear();
                 update();
-                handler.postDelayed(this, 1000*60);
+                handler.postDelayed(this, 1000*60*5);
             }
-        }, 1000*60);
+        }, 1000*60*5);
 
 
 
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        return NavigationUI.navigateUp(navController,drawerLayout);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else{
+        super.onBackPressed();
+    }
     }
 
     public void simpleNoti(Patient patient) {
@@ -131,7 +171,11 @@ public class MainActivity extends AppCompatActivity {
                         long diffMinutes = diff / (60 * 1000);
 
                         if (diffMinutes>60*6) {
-                            simpleNoti(patient);
+                            if (!patient_ids.contains(patient.getID())){
+                                simpleNoti(patient);
+                                patient_ids.add(patient.getID());
+                            }
+
                         }
                     }
                 }

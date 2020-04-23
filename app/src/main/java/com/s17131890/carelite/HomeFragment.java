@@ -16,7 +16,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.s17131890.carelite.databinding.FragmentHomeBinding;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +45,8 @@ public class HomeFragment extends Fragment {
     DatabaseReference databaseDoctors;
     FirebaseUser currentUser;
     SharedViewModel model;
+    ImageView doctorImageHeader;
+    TextView doctorNameHeader;
 
 
     @Override
@@ -54,6 +60,14 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.nav_draw);
+        View view1 = navigationView.getHeaderView(0);
+
+        doctorImageHeader =(ImageView) view1.findViewById(R.id.doctor_image_header);
+        doctorNameHeader =(TextView) view1.findViewById(R.id.doctor_name_header);
+
+
         navController = Navigation.findNavController(view);
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
@@ -90,6 +104,9 @@ public class HomeFragment extends Fragment {
                         binding.docName.setText(doctor.getName());
                         binding.patientCount.setText("Patient Count : "+Integer.toString(doctor.getPatientCount()));
                         model.Doctor_ID = currentUser.getUid();
+                        Picasso.get().load(doctor.getUrl()).fit().into(doctorImageHeader);
+                        Picasso.get().load(doctor.getUrl()).fit().into(binding.imageView);
+                        doctorNameHeader.setText(doctor.getName());
                     }
 
                     Dialog.dismiss();

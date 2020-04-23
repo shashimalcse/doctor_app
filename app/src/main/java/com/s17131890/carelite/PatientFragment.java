@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +33,7 @@ public class PatientFragment extends Fragment {
     RecyclerView recyclerView;
     List<CheckupHistory> historyList;
     NavController navController;
+    LinearLayoutManager linearLayoutManager;
 
 
     @Override
@@ -53,8 +55,13 @@ public class PatientFragment extends Fragment {
         Log.d("HISTORIES",Integer.toString(historyList.size()));
         PatientHistoryAdapter patientHistoryAdapter = new PatientHistoryAdapter(getContext(),historyList,model);
 
+        linearLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                linearLayoutManager.getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
         recyclerView.setAdapter(patientHistoryAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
