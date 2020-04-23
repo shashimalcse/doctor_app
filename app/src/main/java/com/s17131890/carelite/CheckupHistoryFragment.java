@@ -92,7 +92,7 @@ public class CheckupHistoryFragment extends Fragment {
                 String heartrate = HeartRate.getText().toString();
                 String Date = binding.date.getText().toString();
                 String Time = binding.time.getText().toString();
-                if(!temp.equals("") && !pressure.equals("") && !heartrate.equals("")){
+                if(!temp.equals("") && !pressure.equals("") && !heartrate.equals("") && !Date.equals("") && !Time.equals("")){
                     try {
                         model.updatePatient(new CheckupHistory(Float.parseFloat(temp),Integer.parseInt(pressure),Integer.parseInt(heartrate),Date,Time));
                         navController.navigate(R.id.action_checkupHistoryFragment_to_patientFragment);

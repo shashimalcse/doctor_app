@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
         databasePatients = FirebaseDatabase.getInstance().getReference("patients");
         createchannel();
         handler = new Handler();
+        update();
         handler.postDelayed(new Runnable(){
             public void run(){
                 update();
-                Log.d("HIIII","FUCKED");
                 handler.postDelayed(this, 1000*60);
             }
         }, 1000*60);
